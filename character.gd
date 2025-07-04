@@ -2,11 +2,10 @@ extends CharacterBody2D
 class_name Character
 
 @export var max_power := 2000
-@export var gravity := 200.0
+@export var gravity := 600
 @export var coyote_time := 0.1
 
 var _input_pressed := false
-var _jump_buffer := false
 var _power := 0.0
 var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
@@ -14,7 +13,6 @@ var _coyote_timer := 0.0
 func _input(event: InputEvent) -> void:
     # If you were holding and released, buffer a jump
     if _input_pressed and not event.is_pressed():
-        _jump_buffer = true
         _pending_jump_power = _power
     _input_pressed = event.is_pressed()
 
@@ -25,7 +23,6 @@ func _process(delta: float) -> void:
     Connector.hud.update_power(_power)
 
 func _physics_process(delta: float) -> void:
-    # Apply gravity
     velocity.y += gravity * delta
 
     # Update coyote timer
@@ -35,19 +32,19 @@ func _physics_process(delta: float) -> void:
         _coyote_timer -= delta
 
     # If we have a buffered jump and are within coyote time, jump
-    if _jump_buffer and _coyote_timer > 0.0:
+    if _pending_jump_power > 0 and _coyote_timer > 0.0:
         velocity.y = -_pending_jump_power
-        velocity.x += _pending_jump_power / 2
-        _jump_buffer = false
+        velocity.x += _pending_jump_power * 0.8
         _power = 0
         _pending_jump_power = 0
-
-    # Move the character
     move_and_slide()
 
     # Stop falling if landed
     if is_on_floor() and velocity.y >= 0:
         velocity = Vector2.ZERO
+    
+    if get_last_slide_collision() != null:
+        Connector.pillar_manager.player_touched(get_last_slide_collision().get_collider() as Pillar)
 
     # For debugging
     Connector.hud.set_debug("""Velocity: {0}

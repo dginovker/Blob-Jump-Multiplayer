@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Connector="*res://connector.gd"
 
+[debug]
+
+settings/stdout/verbose_stdout=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
