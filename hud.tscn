@@ -45,4 +45,5 @@ label_settings = SubResource("LabelSettings_37p78")
 
 [node name="DebugLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+text = "Test\\nWee"
 label_settings = SubResource("LabelSettings_37p78")
