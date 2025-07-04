@@ -1,16 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvw8orlnp3j2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4roa"]
+size = Vector2(357, 648)
 
-[node name="Area2D" type="Area2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="Pillar" type="CollisionShape2D" parent="."]
+position = Vector2(178.5, 324)
 shape = SubResource("RectangleShape2D_s4roa")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 84.0
+offset_right = 357.0
+offset_bottom = 648.0
 pivot_offset = Vector2(10, 10)
 color = Color(0.985439, 0.854739, 0.887095, 1)

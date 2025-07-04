@@ -34,7 +34,15 @@ offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
 
-[node name="Label" type="Label" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PowerLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Power: 0"
+label_settings = SubResource("LabelSettings_37p78")
+
+[node name="DebugLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 label_settings = SubResource("LabelSettings_37p78")

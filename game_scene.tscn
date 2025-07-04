@@ -7,7 +7,7 @@
 [node name="GameScene" type="Node2D"]
 
 [node name="Start pillar" parent="." instance=ExtResource("2_mixcd")]
-position = Vector2(589, 383)
+position = Vector2(392, 374)
 
 [node name="Character" parent="." instance=ExtResource("3_mj2jn")]
 position = Vector2(586, 317)
