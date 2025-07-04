@@ -10,6 +10,9 @@ var _power := 0.0
 var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 
+func _ready():
+    GameManager.restart(self)
+
 func _input(event: InputEvent) -> void:
     # If you were holding and released, buffer a jump
     if _input_pressed and not event.is_pressed():
@@ -46,7 +49,11 @@ func _physics_process(delta: float) -> void:
     if get_last_slide_collision() != null:
         Connector.pillar_manager.player_touched(get_last_slide_collision().get_collider() as Pillar)
 
+    if position.y > 1500:
+        GameManager.restart(self)
+
     # For debugging
     Connector.hud.set_debug("""Velocity: {0}
-On floor: {1}"""
-    .format([Vector2i(velocity), is_on_floor()]))
+On floor: {1}
+Position: {2}"""
+    .format([Vector2i(velocity), is_on_floor(), Vector2i(position)]))

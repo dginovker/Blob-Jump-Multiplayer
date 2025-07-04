@@ -18,10 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Connector="*res://connector.gd"
-
-[debug]
-
-settings/stdout/verbose_stdout=true
+GameManager="*res://GameManager.gd"
 
 [rendering]
 

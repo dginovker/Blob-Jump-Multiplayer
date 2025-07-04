@@ -16,6 +16,9 @@ grow_vertical = 1
 
 [node name="Character" parent="." instance=ExtResource("3_mj2jn")]
 position = Vector2(586, 317)
+max_power = 2000
+gravity = 600
+coyote_time = 0.1
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -128
