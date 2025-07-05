@@ -6,6 +6,7 @@
 size = Vector2(357, 648)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+collision_mask = 129
 script = ExtResource("1_rjv88")
 
 [node name="Pillar" type="CollisionShape2D" parent="."]

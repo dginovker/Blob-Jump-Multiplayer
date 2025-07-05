@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1xfvb3wj1lhv"]
+
+[ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://arm.png" id="1_eaq64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
+size = Vector2(20, 165)
+
+[node name="ArmRigidBody2D" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -73.5)
+shape = SubResource("RectangleShape2D_pjt0s")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+rotation = 3.14159
+texture = ExtResource("1_eaq64")
+offset = Vector2(0, 77)
