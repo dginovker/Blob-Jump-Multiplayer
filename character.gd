@@ -70,6 +70,6 @@ func _physics_process(delta: float) -> void:
         GameManager.restart(self)
 
     # For debugging
-    Connector.hud.set_debug("""Velocity: {0}
+    Connector.hud.set_debug("""Position: {0}
 On floor: {1}"""
-    .format([Vector2i(linear_velocity), $BottomArea2D.is_colliding()]))
+    .format([Vector2i(position), $BottomArea2D.is_colliding()]))
