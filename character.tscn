@@ -14,11 +14,18 @@ height = 20.7342
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("Arm:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:_power")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa5vi"]
-size = Vector2(127, 20)
+size = Vector2(141, 101)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yxww1"]
+resource_local_to_scene = true
 shader = ExtResource("4_0qfo5")
 shader_parameter/cutoff = 0.5
 
@@ -50,7 +57,7 @@ position = Vector2(0, 40)
 script = ExtResource("4_wfnr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea2D"]
-position = Vector2(0.5, -4)
+position = Vector2(1.5, -44.5)
 shape = SubResource("RectangleShape2D_wa5vi")
 
 [node name="Arm" type="Control" parent="."]

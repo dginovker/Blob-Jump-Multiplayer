@@ -8,4 +8,3 @@ void fragment() {
     vec2 uv = UV * scale;
     COLOR = texture(cloud_texture, fract(uv));
 }
- 

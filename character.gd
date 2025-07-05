@@ -34,6 +34,10 @@ func _process(delta: float) -> void:
     $Camera2D.zoom.y = lerp($Camera2D.zoom.y, target_zoom, delta)
 
 func _physics_process(delta: float) -> void:
+    # No idea how you would sync the material state so we just sync
+    # the _power and make every client update
+    ($Arm/ArmPowerSprite2D.material as ShaderMaterial).set_shader_parameter("cutoff", lerpf(0, 1, _power/max_power))
+
     if not is_multiplayer_authority():
         return
 
@@ -45,15 +49,13 @@ func _physics_process(delta: float) -> void:
     var jump_pressed = Input.is_action_pressed("Jump")
     var jump_just_released = Input.is_action_just_released("Jump")
 
+    if jump_pressed:
+        _power = min(_power + 1000 * delta, max_power)
+    Connector.hud.update_power(_power)
     if $BottomArea2D.is_colliding():
-        if jump_pressed:
-            _power = min(_power + 1000 * delta, max_power)
-        Connector.hud.update_power(_power)
         _coyote_timer = coyote_time
     else:
         _coyote_timer -= delta
-
-    ($Arm/ArmPowerSprite2D.material as ShaderMaterial).set_shader_parameter("cutoff", lerpf(0, 1, _power/max_power))
 
     if jump_just_released:
         _pending_jump_power = _power
