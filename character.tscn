@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqgsc3rrfuf5p"]
+[gd_scene load_steps=5 format=3 uid="uid://bqgsc3rrfuf5p"]
 
 [ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://slime.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_pjt0s"]
@@ -6,6 +6,11 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
 radius = 7.19203
 height = 20.7342
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pjt0s"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_pjt0s")
@@ -22,3 +27,6 @@ shape = SubResource("CapsuleShape2D_pjt0s")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(500, 0)
 zoom = Vector2(0.5, 0.5)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_pjt0s")

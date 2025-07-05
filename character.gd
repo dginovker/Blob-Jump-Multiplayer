@@ -14,9 +14,14 @@ var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 
 func _ready():
-    GameManager.restart(self)
+    if is_multiplayer_authority():
+        $Camera2D.make_current()
+        GameManager.restart(self)
+        print("Spawned with multiplayer authority ", get_multiplayer_authority())        
 
 func _input(event: InputEvent) -> void:
+    if not is_multiplayer_authority():
+        return
     # If you were holding and released, buffer a jump
     if _input_pressed and not event.is_pressed():
         _pending_jump_power = _power
@@ -24,6 +29,8 @@ func _input(event: InputEvent) -> void:
     _input_pressed = event.is_pressed()
 
 func _process(delta: float) -> void:
+    if not is_multiplayer_authority():
+        return
     # Make Camera zoom out the faster the character goes
     var target_zoom = clampf(lerpf(_camera_zoom_max, _camera_zoom_min, max(abs(velocity.x) - 500, 0) / 1000), _camera_zoom_min, _camera_zoom_max)
     # Smoothly interpolate current zoom towards target
@@ -32,6 +39,8 @@ func _process(delta: float) -> void:
     $Camera2D.zoom.y = lerp($Camera2D.zoom.y, target_zoom, delta)
 
 func _physics_process(delta: float) -> void:
+    if not is_multiplayer_authority():
+        return
     velocity.y += gravity * delta
 
     # Update coyote timer
@@ -56,7 +65,7 @@ func _physics_process(delta: float) -> void:
     if is_on_floor() and velocity.y >= 0:
         velocity = Vector2.ZERO
     
-    if get_last_slide_collision() != null:
+    if get_last_slide_collision() != null and get_last_slide_collision().get_collider() is Pillar:
         Connector.pillar_manager.player_touched(get_last_slide_collision().get_collider() as Pillar)
 
     if position.y > 1500:
