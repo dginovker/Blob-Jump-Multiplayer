@@ -11,8 +11,9 @@ var _power := 0.0
 var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 @export var score := 0
-var _touched_objs: Dictionary[Node, bool] = {}
-
+var touched_objs: Dictionary[Node, bool] = {}
+var checkpoint_objs: Dictionary[Node, bool] = {}
+var checkpoint_position: Vector2 = Vector2(0, -100)
 var double_jump: bool = false
 
 func _ready():
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
     if not is_multiplayer_authority():
         return
     
-    score = len(_touched_objs)
+    score = len(touched_objs)
 
     if Input.is_action_pressed("Left"):
         $Arm.rotation -= delta * 5

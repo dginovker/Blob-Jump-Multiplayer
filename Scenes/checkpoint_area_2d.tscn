@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8ekapnpvybmg"]
+
+[ext_resource type="Texture2D" uid="uid://ngn4dka83f7l" path="res://Sprites/CheckpointRed.png" id="1_4kd5l"]
+[ext_resource type="Script" uid="uid://dph5nnc6u3g8x" path="res://Scenes/checkpoint_area_2d.gd" id="1_sgxom"]
+[ext_resource type="Texture2D" uid="uid://ufsx0vp0cujs" path="res://Sprites/CheckpointGreen.png" id="2_sgxom"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8wau"]
+radius = 64.0
+
+[node name="CheckpointArea2D" type="Area2D"]
+collision_mask = 129
+script = ExtResource("1_sgxom")
+
+[node name="RedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, -33)
+scale = Vector2(2, 2)
+texture = ExtResource("1_4kd5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, -32)
+shape = SubResource("CircleShape2D_l8wau")
+
+[node name="GreenSprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_sgxom")
