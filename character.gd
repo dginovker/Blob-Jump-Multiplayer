@@ -12,6 +12,7 @@ var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 
 var touched_objs: Dictionary[Node, bool] = {}
+var double_jump: bool = false
 
 func _ready():
     $SteamRightAnimatedSprite2D.play("default")
@@ -31,6 +32,7 @@ func _process(delta: float) -> void:
     # 0.1 is the smoothing factor — tweak this for more/less smoothness
     $Camera2D.zoom.x = lerp($Camera2D.zoom.x, target_zoom, delta)
     $Camera2D.zoom.y = lerp($Camera2D.zoom.y, target_zoom, delta)
+    Connector.hud.set_fuel(double_jump)
 
 func _physics_process(delta: float) -> void:
     # No idea how you would sync the material state so we just sync
@@ -67,16 +69,23 @@ func _physics_process(delta: float) -> void:
 
     # If we have a buffered jump and are within coyote time, jump
     if _pending_jump_power > 0 and _coyote_timer > 0.0:
-        var angle = $Arm.rotation + PI/2
-        var jump_impulse = Vector2(cos(angle), sin(angle)) * _pending_jump_power
-        apply_central_impulse(jump_impulse)
-        _pending_jump_power = 0
+        _jump()
+    # If we have a double jump and are outside the coyote time, jump
+    if jump_just_released and double_jump and _coyote_timer <= 0:
+        double_jump = false
+        _pending_jump_power = max_power / 2
+        _jump()
 
     if position.y > 1500:
         GameManager.restart(self)
 
     # For debugging
     Connector.hud.set_debug("""Position: {0}
-On floor: {1}
-Points: {2}"""
-    .format([Vector2i(position), $BottomArea2D.is_colliding(), len(touched_objs)]))
+On floor: {1}"""
+    .format([Vector2i(position), $BottomArea2D.is_colliding()]))
+
+func _jump():
+    var angle = $Arm.rotation + PI/2
+    var jump_impulse = Vector2(cos(angle), sin(angle)) * _pending_jump_power
+    apply_central_impulse(jump_impulse)
+    _pending_jump_power = 0

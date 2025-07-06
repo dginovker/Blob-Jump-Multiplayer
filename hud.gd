@@ -5,7 +5,7 @@ func _ready() -> void:
     Connector.register_hud(self)
     # Debug stuff
     $PanelContainer/VBoxContainer/PowerLabel.visible = false
-    $PanelContainer/VBoxContainer/DebugLabel.visible = false
+    #$PanelContainer/VBoxContainer/DebugLabel.visible = false
 
 func update_power(power: float):
     $PanelContainer/VBoxContainer/PowerLabel.text = "Power: " + str(int(power))
@@ -22,3 +22,5 @@ func update_hiscores(scores: Array[int]):
     var label: Label = $PanelContainer/VBoxContainer/HiscoreLabel
     label.text = text
     
+func set_fuel(vis: bool) -> void:
+    $Items/HBoxContainer/Fuel.visible = vis
