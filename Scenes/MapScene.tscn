@@ -96,6 +96,42 @@ position = Vector2(2072, -40)
 [node name="StarArea2D6" parent="Stars" instance=ExtResource("2_2hwfj")]
 position = Vector2(2368, -336)
 
+[node name="StarArea2D7" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(3560, -312)
+
+[node name="StarArea2D8" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(4216, -384)
+
+[node name="StarArea2D9" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(4608, -1240)
+
+[node name="StarArea2D10" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(4088, -384)
+
+[node name="StarArea2D11" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(4152, -488)
+
+[node name="StarArea2D12" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(6880, -1264)
+
+[node name="StarArea2D13" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(7008, -1264)
+
+[node name="StarArea2D14" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(6944, -1360)
+
+[node name="StarArea2D15" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(5408, -1856)
+
+[node name="StarArea2D16" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(5528, -1856)
+
+[node name="StarArea2D17" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(5408, -1968)
+
+[node name="StarArea2D18" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(5528, -1976)
+
 [node name="Fuel" type="Node" parent="."]
 
 [node name="FuelArea2D" parent="Fuel" instance=ExtResource("3_8xbvk")]
