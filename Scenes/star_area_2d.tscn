@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djwff8spk6ua6"]
+
+[ext_resource type="Script" uid="uid://e4y327qlt5sx" path="res://Scenes/star_area_2d.gd" id="1_12iir"]
+[ext_resource type="Texture2D" uid="uid://d3gmyap4i86h8" path="res://Sprites/ShitStar.png" id="2_i7eu3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hwfj"]
+radius = 36.878178
+
+[node name="StarArea2D" type="Area2D"]
+collision_mask = 129
+script = ExtResource("1_12iir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2hwfj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i7eu3")

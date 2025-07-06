@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqgsc3rrfuf5p"]
+[gd_scene load_steps=16 format=3 uid="uid://bqgsc3rrfuf5p"]
 
 [ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_ejsiy"]
 [ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://Sprites/slime.png" id="2_2mse5"]
 [ext_resource type="Script" uid="uid://ytof2m14j3jw" path="res://FatRaycast2D.gd" id="3_reotu"]
 [ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://Sprites/arm.png" id="4_a5ess"]
 [ext_resource type="Shader" uid="uid://b1puod5j6bbuy" path="res://Shaders/ArmShader.gdshader" id="5_wbia7"]
+[ext_resource type="Texture2D" uid="uid://bocsxnoikb3tp" path="res://Sprites/Steam/Frame1.png" id="6_wbia7"]
+[ext_resource type="Texture2D" uid="uid://buveb0oxredtc" path="res://Sprites/Steam/Frame2.png" id="7_kq7hj"]
+[ext_resource type="Texture2D" uid="uid://ca0iinrkee3cn" path="res://Sprites/Steam/Frame3.png" id="8_7iw6i"]
+[ext_resource type="Texture2D" uid="uid://csf4ypg3qhdy" path="res://Sprites/Steam/Frame4.png" id="9_l1rcp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ejsiy"]
 friction = 0.8
@@ -32,6 +36,26 @@ resource_local_to_scene = true
 shader = ExtResource("5_wbia7")
 shader_parameter/cutoff = 0.5
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_le1tg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wbia7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kq7hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7iw6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l1rcp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="SlimeRigidBody2D" type="RigidBody2D"]
 collision_layer = 128
 physics_material_override = SubResource("PhysicsMaterial_ejsiy")
@@ -42,8 +66,10 @@ max_contacts_reported = 80
 script = ExtResource("1_ejsiy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(-62, 48)
 texture = ExtResource("2_2mse5")
+centered = false
+offset = Vector2(0, -128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.00002, -5.30854)
@@ -84,3 +110,14 @@ material = SubResource("ShaderMaterial_yxww1")
 position = Vector2(1, -4)
 texture = ExtResource("4_a5ess")
 offset = Vector2(0, 76)
+
+[node name="SteamRightAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(82, -41)
+sprite_frames = SubResource("SpriteFrames_le1tg")
+frame_progress = 0.856939
+
+[node name="SteamLeftAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-73, -40)
+sprite_frames = SubResource("SpriteFrames_le1tg")
+frame_progress = 0.856939
+flip_h = true

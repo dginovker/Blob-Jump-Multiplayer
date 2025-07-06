@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://b087mexxod1l7"]
 
 [ext_resource type="Texture2D" uid="uid://5jrbvgnq8tyy" path="res://Sprites/CombinedTreeTiles.png" id="1_mq6b6"]
-[ext_resource type="Script" uid="uid://dut672gg2ikki" path="res://Scenes/tile_map_layer.gd" id="2_2hwfj"]
+[ext_resource type="PackedScene" uid="uid://djwff8spk6ua6" path="res://Scenes/star_area_2d.tscn" id="2_2hwfj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqw6h"]
 texture = ExtResource("1_mq6b6")
@@ -27,7 +27,9 @@ sources/0 = SubResource("TileSetAtlasSource_dqw6h")
 
 [node name="MapScene" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="MainObstacleLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wIAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAIAAAABAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAAAAAEAAAABAAEAAAD//wEAAAAAAAEAAAABAAAAAAACAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAAAAAABAAAAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAFAAAAAAACAAAAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAKAAAAAAABAAAAAAAKAAEAAAABAAEAAAALAAAAAAACAAAAAAALAAEAAAACAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAABAAEAAAALAAIAAAACAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAEAAAAPAAAAAAACAAAAAAAPAAEAAAACAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAACAAEAAAATAP//AAAAAAAAAAATAAAAAAAAAAEAAAAUAP//AAACAAAAAAAUAAAAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_bb2se")
-script = ExtResource("2_2hwfj")
+
+[node name="StarArea2D" parent="." instance=ExtResource("2_2hwfj")]
+position = Vector2(48, -216)

@@ -11,20 +11,16 @@ var _power := 0.0
 var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 
-var _touched_objs: Dictionary[String, bool] = {}
+var touched_objs: Dictionary[Node, bool] = {}
 
 func _ready():
+    $SteamRightAnimatedSprite2D.play("default")
+    $SteamLeftAnimatedSprite2D.play("default")
     if not is_multiplayer_authority():
         return
-    body_entered.connect(_on_body_entered)
     $Camera2D.make_current()
     GameManager.restart(self)
     print("Spawned with multiplayer authority ", get_multiplayer_authority())        
-
-func _on_body_entered(body: Node) -> void:
-    if body.name not in _touched_objs:
-        print("Touched ", body.name, " for the first time!")
-        _touched_objs[body.name] = true
 
 func _process(delta: float) -> void:
     if not is_multiplayer_authority():
@@ -40,7 +36,9 @@ func _physics_process(delta: float) -> void:
     # No idea how you would sync the material state so we just sync
     # the _power and make every client update
     ($Arm/ArmPowerSprite2D.material as ShaderMaterial).set_shader_parameter("cutoff", lerpf(0, 1, _power/max_power))
-
+    $SteamRightAnimatedSprite2D.visible = _power > 0
+    $SteamLeftAnimatedSprite2D.visible = _power > 0
+    $Sprite2D.scale.y = lerpf(1, 0.7, _power/max_power)
     if not is_multiplayer_authority():
         return
 
@@ -78,4 +76,4 @@ func _physics_process(delta: float) -> void:
     Connector.hud.set_debug("""Position: {0}
 On floor: {1}
 Points: {2}"""
-    .format([Vector2i(position), $BottomArea2D.is_colliding(), len(_touched_objs)]))
+    .format([Vector2i(position), $BottomArea2D.is_colliding(), len(touched_objs)]))
