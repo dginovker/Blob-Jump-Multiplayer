@@ -1,23 +1,30 @@
 extends Node
 class_name ServerManager
 
-func _ready():
-    var peer = ENetMultiplayerPeer.new()
-    var result = peer.create_server(9999)
-    if result == OK:
-        print("Server started")
-        multiplayer.multiplayer_peer = peer
-        multiplayer.peer_connected.connect(_add_player_to_game)
-        _add_player_to_game(1)  # Spawn character for server
-    elif result == ERR_CANT_CREATE:
-        print("Joining as client")
-        result = peer.create_client("127.0.0.1", 9999)
-        multiplayer.multiplayer_peer = peer
-
 var player_scene = preload("res://Scenes/character.tscn")
+var peer : WebSocketMultiplayerPeer
+
+func _ready():
+    peer = WebSocketMultiplayerPeer.new()
+    var server_result = peer.create_server(9999)
+    if server_result == OK:
+        print("Server started")
+        get_tree().get_multiplayer().multiplayer_peer = peer
+        get_tree().get_multiplayer().peer_connected.connect(_add_player_to_game)
+        _add_player_to_game(1)
+        Connector.hud.hide_loading()
+    else:
+        print("Joining as WebSocket client")
+        peer.create_client("ws://127.0.0.1:9999")
+        get_tree().get_multiplayer().multiplayer_peer = peer
+        get_tree().get_multiplayer().peer_connected.connect(_on_client_connected)
+
+func _on_client_connected(id):
+    print("Connected as client, id: ", id)
+    Connector.hud.hide_loading()
 
 func _add_player_to_game(id):
-    if not multiplayer.is_server():
+    if not get_tree().get_multiplayer().is_server():
         return
-    print("As the server, I'm going to spawn ", id)
+    print("Spawning player ", id)
     Connector.multiplayer_spawner.spawn(id)

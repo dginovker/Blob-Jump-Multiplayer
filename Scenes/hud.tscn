@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq4fcxbqsfd5w"]
+[gd_scene load_steps=8 format=3 uid="uid://bq4fcxbqsfd5w"]
 
 [ext_resource type="Script" uid="uid://1jfxpstvagb5" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Texture2D" uid="uid://dobhh42r6fy5o" path="res://Sprites/Fuel.png" id="2_fccik"]
@@ -15,6 +15,29 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_37p78"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjfho"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_fccik"]
 font_size = 32
 
 [node name="Hud" type="Control"]
@@ -46,11 +69,13 @@ text = "Hiscores"
 label_settings = SubResource("LabelSettings_37p78")
 
 [node name="PowerLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Power: 0"
 label_settings = SubResource("LabelSettings_37p78")
 
 [node name="DebugLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Test\\nWee"
 label_settings = SubResource("LabelSettings_37p78")
@@ -70,3 +95,37 @@ layout_mode = 2
 [node name="Fuel" type="TextureRect" parent="Items/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_fccik")
+
+[node name="Loading" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fccik")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Loading"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Loading" type="Label" parent="Loading/VBoxContainer"]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_bjfho")
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="Loading/VBoxContainer"]
+layout_mode = 2
+text = "This game has a multiplayer server. If you're stuck loading, either something is broken, or I took the server down!
+
+If you're unable to connect, click the below button to play Singleplayer instead."
+label_settings = SubResource("LabelSettings_fccik")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Loading/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Start Singleplayer Instead "

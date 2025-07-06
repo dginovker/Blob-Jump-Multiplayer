@@ -3,9 +3,11 @@ class_name Hud
 
 func _ready() -> void:
     Connector.register_hud(self)
+    var singleplayer_button: Button = $Loading/VBoxContainer/Button
+    singleplayer_button.pressed.connect(_start_singleplayer)
     # Debug stuff
-    $PanelContainer/VBoxContainer/PowerLabel.visible = false
-    #$PanelContainer/VBoxContainer/DebugLabel.visible = false
+    #$PanelContainer/VBoxContainer/PowerLabel.visible = true
+    #$PanelContainer/VBoxContainer/DebugLabel.visible = true
 
 func update_power(power: float):
     $PanelContainer/VBoxContainer/PowerLabel.text = "Power: " + str(int(power))
@@ -24,3 +26,11 @@ func update_hiscores(scores: Array[int]):
     
 func set_fuel(vis: bool) -> void:
     $Items/HBoxContainer/Fuel.visible = vis
+
+func hide_loading() -> void:
+    $Loading.visible = false
+    
+func _start_singleplayer() -> void:
+    hide_loading()
+    print("Starting singleplayer...")
+    Connector.multiplayer_spawner.spawn(1)

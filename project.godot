@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 Connector="*res://connector.gd"
 GameManager="*res://GameManager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 Left={
