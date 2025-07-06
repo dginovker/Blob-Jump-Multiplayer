@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1xfvb3wj1lhv"]
+[gd_scene load_steps=3 format=3 uid="uid://cc2wnwx0l427x"]
 
-[ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://arm.png" id="1_eaq64"]
+[ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://Sprites/arm.png" id="1_eaq64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
 size = Vector2(20, 165)

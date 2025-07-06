@@ -11,6 +11,8 @@ var _power := 0.0
 var _pending_jump_power := 0.0
 var _coyote_timer := 0.0
 
+var _touched_objs: Dictionary[String, bool] = {}
+
 func _ready():
     if not is_multiplayer_authority():
         return
@@ -20,8 +22,9 @@ func _ready():
     print("Spawned with multiplayer authority ", get_multiplayer_authority())        
 
 func _on_body_entered(body: Node) -> void:
-    if body is Pillar:
-        Connector.pillar_manager.player_touched.call_deferred(body as Pillar)
+    if body.name not in _touched_objs:
+        print("Touched ", body.name, " for the first time!")
+        _touched_objs[body.name] = true
 
 func _process(delta: float) -> void:
     if not is_multiplayer_authority():
@@ -73,5 +76,6 @@ func _physics_process(delta: float) -> void:
 
     # For debugging
     Connector.hud.set_debug("""Position: {0}
-On floor: {1}"""
-    .format([Vector2i(position), $BottomArea2D.is_colliding()]))
+On floor: {1}
+Points: {2}"""
+    .format([Vector2i(position), $BottomArea2D.is_colliding(), len(_touched_objs)]))

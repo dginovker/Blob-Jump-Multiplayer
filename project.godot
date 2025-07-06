@@ -13,7 +13,6 @@ config_version=5
 config/name="PillarJumper"
 run/main_scene="uid://dil5p4s377kxh"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 

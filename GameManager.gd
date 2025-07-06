@@ -1,7 +1,5 @@
 extends Node
 
 func restart(player: Character) -> void:
-    player.position = Vector2(518, 200)
+    player.position = Vector2(0, -100)
     player.linear_velocity = Vector2.ZERO
-    if Connector.pillar_manager:
-        Connector.pillar_manager.restart()

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dil5p4s377kxh"]
+
+[ext_resource type="Script" uid="uid://cg84xohakdvrx" path="res://ServerManager.gd" id="1_7iton"]
+[ext_resource type="PackedScene" uid="uid://bq4fcxbqsfd5w" path="res://Scenes/hud.tscn" id="2_ikfsv"]
+[ext_resource type="Script" uid="uid://ckik365fxukcw" path="res://multiplayer_spawner.gd" id="5_4xiap"]
+[ext_resource type="Shader" uid="uid://cyk5l0bgy2xtf" path="res://Shaders/Cloud.gdshader" id="6_wywco"]
+[ext_resource type="Texture2D" uid="uid://bps4osagdf1mm" path="res://Sprites/Background.png" id="7_ldntv"]
+[ext_resource type="Texture2D" uid="uid://dhq8jb34jh4ot" path="res://Sprites/CloudsSpreadf.png" id="8_w8jfd"]
+[ext_resource type="PackedScene" uid="uid://b087mexxod1l7" path="res://Scenes/MapScene.tscn" id="9_ikfsv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e35lh"]
+shader = ExtResource("6_wywco")
+shader_parameter/cloud_texture = ExtResource("7_ldntv")
+shader_parameter/scale = Vector2(5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miq82"]
+shader = ExtResource("6_wywco")
+shader_parameter/cloud_texture = ExtResource("8_w8jfd")
+shader_parameter/scale = Vector2(5, 5)
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_7iton")
+
+[node name="HudCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="HudCanvasLayer" instance=ExtResource("2_ikfsv")]
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="Players" type="Node" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Players"]
+spawn_path = NodePath("..")
+script = ExtResource("5_4xiap")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayerBg" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBg"]
+material = SubResource("ShaderMaterial_e35lh")
+position = Vector2(0, -1620)
+scale = Vector2(5, 5)
+texture = ExtResource("7_ldntv")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="ParallaxLayer2Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2304, 1296)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2Clouds"]
+material = SubResource("ShaderMaterial_miq82")
+scale = Vector2(5, 5)
+texture = ExtResource("8_w8jfd")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2304, 1296)
+
+[node name="MapScene" parent="." instance=ExtResource("9_ikfsv")]

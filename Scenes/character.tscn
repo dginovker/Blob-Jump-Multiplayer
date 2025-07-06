@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqgsc3rrfuf5p"]
+[gd_scene load_steps=11 format=3 uid="uid://bqgsc3rrfuf5p"]
 
-[ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://slime.png" id="1_glpr6"]
-[ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_pjt0s"]
-[ext_resource type="Shader" uid="uid://b1puod5j6bbuy" path="res://ArmShader.gdshader" id="4_0qfo5"]
-[ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://arm.png" id="4_px5sl"]
-[ext_resource type="Script" uid="uid://ytof2m14j3jw" path="res://FatRaycast2D.gd" id="4_wfnr8"]
+[ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_ejsiy"]
+[ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://Sprites/slime.png" id="2_2mse5"]
+[ext_resource type="Script" uid="uid://ytof2m14j3jw" path="res://FatRaycast2D.gd" id="3_reotu"]
+[ext_resource type="Texture2D" uid="uid://c63rh0osu05q2" path="res://Sprites/arm.png" id="4_a5ess"]
+[ext_resource type="Shader" uid="uid://b1puod5j6bbuy" path="res://Shaders/ArmShader.gdshader" id="5_wbia7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
-radius = 7.19203
-height = 20.7342
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ejsiy"]
+friction = 0.8
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejsiy"]
+radius = 8.21536
+height = 21.7709
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pjt0s"]
 properties/0/path = NodePath(".:position")
@@ -26,24 +29,27 @@ size = Vector2(141, 101)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yxww1"]
 resource_local_to_scene = true
-shader = ExtResource("4_0qfo5")
+shader = ExtResource("5_wbia7")
 shader_parameter/cutoff = 0.5
 
 [node name="SlimeRigidBody2D" type="RigidBody2D"]
 collision_layer = 128
+physics_material_override = SubResource("PhysicsMaterial_ejsiy")
 lock_rotation = true
+continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 80
-script = ExtResource("1_pjt0s")
+script = ExtResource("1_ejsiy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("1_glpr6")
+texture = ExtResource("2_2mse5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.00002, -5.30854)
 rotation = -1.5708
 scale = Vector2(5.56171, 5.78755)
-shape = SubResource("CapsuleShape2D_pjt0s")
+shape = SubResource("CapsuleShape2D_ejsiy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(500, 0)
@@ -54,7 +60,7 @@ replication_config = SubResource("SceneReplicationConfig_pjt0s")
 
 [node name="BottomArea2D" type="Area2D" parent="."]
 position = Vector2(0, 40)
-script = ExtResource("4_wfnr8")
+script = ExtResource("3_reotu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea2D"]
 position = Vector2(1.5, -44.5)
@@ -69,12 +75,12 @@ offset_bottom = 40.0
 [node name="ArmSprite2D" type="Sprite2D" parent="Arm"]
 texture_filter = 1
 position = Vector2(1, -4)
-texture = ExtResource("4_px5sl")
+texture = ExtResource("4_a5ess")
 offset = Vector2(0, 76)
 
 [node name="ArmPowerSprite2D" type="Sprite2D" parent="Arm"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yxww1")
 position = Vector2(1, -4)
-texture = ExtResource("4_px5sl")
+texture = ExtResource("4_a5ess")
 offset = Vector2(0, 76)

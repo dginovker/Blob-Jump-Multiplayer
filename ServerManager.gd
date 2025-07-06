@@ -14,7 +14,7 @@ func _ready():
         result = peer.create_client("127.0.0.1", 9999)
         multiplayer.multiplayer_peer = peer
 
-var player_scene = preload("res://character.tscn")
+var player_scene = preload("res://Scenes/character.tscn")
 
 func _add_player_to_game(id):
     if not multiplayer.is_server():

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=4 uid="uid://b087mexxod1l7"]
+
+[ext_resource type="Texture2D" uid="uid://5jrbvgnq8tyy" path="res://Sprites/CombinedTreeTiles.png" id="1_mq6b6"]
+[ext_resource type="Script" uid="uid://dut672gg2ikki" path="res://Scenes/tile_map_layer.gd" id="2_2hwfj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqw6h"]
+texture = ExtResource("1_mq6b6")
+texture_region_size = Vector2i(128, 128)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -56, 64, -64, -56, -64, -64, -64, -64, 56, -64, 64, 64, 64, 64, 56)
+
+[sub_resource type="TileSet" id="TileSet_bb2se"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 129
+sources/0 = SubResource("TileSetAtlasSource_dqw6h")
+
+[node name="MapScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wIAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAIAAAABAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAAAAAEAAAABAAEAAAD//wEAAAAAAAEAAAABAAAAAAACAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAAAAAABAAAAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAFAAAAAAACAAAAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAKAAAAAAABAAAAAAAKAAEAAAABAAEAAAALAAAAAAACAAAAAAALAAEAAAACAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAABAAEAAAALAAIAAAACAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAEAAAAPAAAAAAACAAAAAAAPAAEAAAACAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAACAAEAAAATAP//AAAAAAAAAAATAAAAAAAAAAEAAAAUAP//AAACAAAAAAAUAAAAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_bb2se")
+script = ExtResource("2_2hwfj")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63rh0osu05q2"
-path="res://.godot/imported/arm.png-43484c86ee181f0fabb6e19314961772.ctex"
+uid="uid://boea5hbx218e6"
+path="res://.godot/imported/Icon.png-7ba10158a75da294647ba8f9a8114eac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arm.png"
-dest_files=["res://.godot/imported/arm.png-43484c86ee181f0fabb6e19314961772.ctex"]
+source_file="res://plugins/TileMapColliderGenerator/Icon.png"
+dest_files=["res://.godot/imported/Icon.png-7ba10158a75da294647ba8f9a8114eac.ctex"]
 
 [params]
 

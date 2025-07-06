@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhq8jb34jh4ot"
-path="res://.godot/imported/CloudsSpreadf.png-00778838df3438ece28746273ac2103d.ctex"
+uid="uid://b8hxv0l8bfoye"
+path="res://.godot/imported/TileMap-PlusColliders.png-5fb90d59efc00b4c551b06803b030705.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CloudsSpreadf.png"
-dest_files=["res://.godot/imported/CloudsSpreadf.png-00778838df3438ece28746273ac2103d.ctex"]
+source_file="res://plugins/TileMapColliderGenerator/TileMap-PlusColliders.png"
+dest_files=["res://.godot/imported/TileMap-PlusColliders.png-5fb90d59efc00b4c551b06803b030705.ctex"]
 
 [params]
 
