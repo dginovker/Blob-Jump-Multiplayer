@@ -31,5 +31,22 @@ sources/0 = SubResource("TileSetAtlasSource_dqw6h")
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wIAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAIAAAABAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAAAAAEAAAABAAEAAAD//wEAAAAAAAEAAAABAAAAAAACAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAAAAAABAAAAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAFAAAAAAACAAAAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAKAAAAAAABAAAAAAAKAAEAAAABAAEAAAALAAAAAAACAAAAAAALAAEAAAACAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAABAAEAAAALAAIAAAACAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAEAAAAPAAAAAAACAAAAAAAPAAEAAAACAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAACAAEAAAATAP//AAAAAAAAAAATAAAAAAAAAAEAAAAUAP//AAACAAAAAAAUAAAAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_bb2se")
 
-[node name="StarArea2D" parent="." instance=ExtResource("2_2hwfj")]
+[node name="Stars" type="Node" parent="."]
+
+[node name="StarArea2D" parent="Stars" instance=ExtResource("2_2hwfj")]
 position = Vector2(48, -216)
+
+[node name="StarArea2D2" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(440, -184)
+
+[node name="StarArea2D3" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(648, -184)
+
+[node name="StarArea2D4" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(1344, -88)
+
+[node name="StarArea2D5" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(2072, -40)
+
+[node name="StarArea2D6" parent="Stars" instance=ExtResource("2_2hwfj")]
+position = Vector2(2368, -336)

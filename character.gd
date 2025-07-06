@@ -39,6 +39,9 @@ func _physics_process(delta: float) -> void:
     $SteamRightAnimatedSprite2D.visible = _power > 0
     $SteamLeftAnimatedSprite2D.visible = _power > 0
     $Sprite2D.scale.y = lerpf(1, 0.7, _power/max_power)
+    $Title/PanelContainer/PointsLabel.text = "Points: {0}".format([len(touched_objs)])
+    $Title.visible = len(touched_objs) > 0 
+    
     if not is_multiplayer_authority():
         return
 

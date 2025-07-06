@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqgsc3rrfuf5p"]
+[gd_scene load_steps=17 format=3 uid="uid://bqgsc3rrfuf5p"]
 
 [ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_ejsiy"]
 [ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://Sprites/slime.png" id="2_2mse5"]
@@ -55,6 +55,9 @@ animations = [{
 "name": &"default",
 "speed": 15.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbia7"]
+font_size = 32
 
 [node name="SlimeRigidBody2D" type="RigidBody2D"]
 collision_layer = 128
@@ -121,3 +124,26 @@ position = Vector2(-73, -40)
 sprite_frames = SubResource("SpriteFrames_le1tg")
 frame_progress = 0.856939
 flip_h = true
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointsLabel" type="Label" parent="Title/PanelContainer"]
+layout_mode = 2
+text = "Points: 0"
+label_settings = SubResource("LabelSettings_wbia7")

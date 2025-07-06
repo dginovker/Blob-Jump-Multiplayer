@@ -12,3 +12,10 @@ func _custom_spawn(peer_id: int) -> Node:
     p.set_multiplayer_authority(peer_id)
     print("Returning ", p)
     return p
+    
+func _process(_delta: float) -> void:
+    var scores: Array[int] = []
+    for node in $"..".get_children():
+        if node is Character:
+            scores.append(len((node as Character).touched_objs))
+    Connector.hud.update_hiscores(scores)
