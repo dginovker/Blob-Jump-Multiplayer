@@ -17,5 +17,5 @@ func _process(_delta: float) -> void:
     var scores: Array[int] = []
     for node in $"..".get_children():
         if node is Character:
-            scores.append(len((node as Character).touched_objs))
+            scores.append((node as Character).score)
     Connector.hud.update_hiscores(scores)
