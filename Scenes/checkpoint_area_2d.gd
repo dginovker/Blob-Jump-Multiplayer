@@ -7,7 +7,12 @@ func _on_body_entered(body: Node) -> void:
     if body is not Character:
         return
     body = body as Character
+    # Enable this checkpoint
     $RedSprite2D.visible = false
     $GreenSprite2D.visible = true
-    body.checkpoint_position = position
-    body.checkpoint_objs = body.touched_objs.duplicate()
+    # Disable any previous checkpoint
+    if body.checkpoint != null and body.checkpoint != self:
+        body.checkpoint.get_node("RedSprite2D").visible = true
+        body.checkpoint.get_node("GreenSprite2D").visible = false
+    body.checkpoint = self
+    body.checkpoint_stars = body.touched_stars.duplicate()

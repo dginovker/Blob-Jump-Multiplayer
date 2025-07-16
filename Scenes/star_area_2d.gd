@@ -6,5 +6,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
     if body is Character:
         visible = false
-        (body as Character).touched_objs[self] = true
+        (body as Character).touched_stars[self] = true
     

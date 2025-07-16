@@ -146,6 +146,9 @@ position = Vector2(7584, -1432)
 [node name="CheckpointArea2D" parent="Checkpoints" instance=ExtResource("4_su3qq")]
 position = Vector2(8160, -1320)
 
+[node name="CheckpointArea2D2" parent="Checkpoints" instance=ExtResource("4_su3qq")]
+position = Vector2(7200, -1376)
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
