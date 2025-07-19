@@ -7,6 +7,8 @@ func _on_body_entered(body: Node) -> void:
     if body is not Character:
         return
     body = body as Character
+    if not body.is_multiplayer_authority():
+        return
     # Enable this checkpoint
     $RedSprite2D.visible = false
     $GreenSprite2D.visible = true

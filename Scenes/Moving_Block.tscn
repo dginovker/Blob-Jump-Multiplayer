@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://csokx0k14yy12"]
+
+[ext_resource type="Script" uid="uid://dgkn5dw6dxu7h" path="res://moving_platform.gd" id="1_ovxm4"]
+[ext_resource type="Texture2D" uid="uid://5jrbvgnq8tyy" path="res://Sprites/CombinedTreeTiles.png" id="2_nw0np"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lngpp"]
+friction = 3.0
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hwfj"]
+size = Vector2(384, 256)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ovxm4"]
+properties/0/path = NodePath(".:progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="PathFollow2D" type="PathFollow2D"]
+rotates = false
+loop = false
+
+[node name="MovingPlatformAnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-8, 0)
+physics_material_override = SubResource("PhysicsMaterial_lngpp")
+sync_to_physics = false
+script = ExtResource("1_ovxm4")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatformAnimatableBody2D"]
+texture = ExtResource("2_nw0np")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatformAnimatableBody2D"]
+shape = SubResource("RectangleShape2D_2hwfj")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ovxm4")

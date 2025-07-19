@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcbm6b0oake3o"]
+
+[ext_resource type="Script" uid="uid://dgkn5dw6dxu7h" path="res://moving_platform.gd" id="1_82qso"]
+[ext_resource type="Texture2D" uid="uid://5jrbvgnq8tyy" path="res://Sprites/CombinedTreeTiles.png" id="2_pq7gf"]
+
+[sub_resource type="Curve2D" id="Curve2D_2hwfj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3072, -72, 0, 0, 0, 0, 3712, -72)
+}
+point_count = 2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lngpp"]
+friction = 3.0
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hwfj"]
+size = Vector2(384, 256)
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_2hwfj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(3072, -72)
+rotates = false
+loop = false
+
+[node name="MovingPlatformAnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
+position = Vector2(-8, 0)
+physics_material_override = SubResource("PhysicsMaterial_lngpp")
+sync_to_physics = false
+script = ExtResource("1_82qso")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/MovingPlatformAnimatableBody2D"]
+texture = ExtResource("2_pq7gf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/MovingPlatformAnimatableBody2D"]
+shape = SubResource("RectangleShape2D_2hwfj")
