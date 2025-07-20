@@ -149,42 +149,38 @@ grow_vertical = 0
 [node name="HBoxContainer2" type="HBoxContainer" parent="MobileControlsVBox"]
 layout_mode = 2
 
-[node name="SpacerControl3" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+[node name="Control" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="CenterContainer1" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeftButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
-layout_mode = 2
-focus_mode = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
+[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="MobileControlsVBox/HBoxContainer2/CenterContainer1"]
 texture_normal = ExtResource("3_43w4t")
 texture_pressed = ExtResource("4_7gr8i")
 
-[node name="SpacerControl" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+[node name="CenterContainer2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="JumpButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
-layout_mode = 2
-focus_mode = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
+[node name="JumpTouchScreenButton" type="TouchScreenButton" parent="MobileControlsVBox/HBoxContainer2/CenterContainer2"]
+position = Vector2(17, 0)
 texture_normal = ExtResource("5_5ep0j")
 texture_pressed = ExtResource("6_4f5kr")
 
-[node name="SpacerControl2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+[node name="CenterContainer3" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RightButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
-layout_mode = 2
-focus_mode = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
+[node name="RightTouchScreenButton" type="TouchScreenButton" parent="MobileControlsVBox/HBoxContainer2/CenterContainer3"]
+position = Vector2(158, 0)
 texture_normal = ExtResource("7_piegi")
 texture_pressed = ExtResource("8_i2avg")
 
-[node name="SpacerControl4" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+[node name="Control2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
