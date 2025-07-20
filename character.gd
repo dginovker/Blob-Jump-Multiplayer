@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name Character
 
+@onready var blood: CPUParticles2D = $CPUParticles2D
+
 @export var max_power := 1000
 @export var coyote_time := 0.1
 
@@ -50,8 +52,7 @@ func _physics_process(delta: float) -> void:
         return
     
     if $Area2D.is_stabbed():
-        # die
-        GameManager.restart(self)
+        GameManager.die(self)
         return
     
     score = len(touched_stars)
