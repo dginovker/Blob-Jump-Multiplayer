@@ -16,7 +16,9 @@ var _coyote_timer := 0.0
 var touched_stars: Dictionary[Node, bool] = {}
 var checkpoint_stars: Dictionary[Node, bool] = {}
 var checkpoint: Area2D = null
-var double_jump: bool = false
+var fuel: bool = false
+var checkpoint_fuel: bool = false
+var parachute_time: float = 0
 
 func _ready():
     $SteamRightAnimatedSprite2D.play("default")
@@ -36,7 +38,8 @@ func _process(delta: float) -> void:
     # 0.1 is the smoothing factor — tweak this for more/less smoothness
     $Camera2D.zoom.x = lerp($Camera2D.zoom.x, target_zoom, delta)
     $Camera2D.zoom.y = lerp($Camera2D.zoom.y, target_zoom, delta)
-    Connector.hud.set_fuel(double_jump)
+    Connector.hud.set_fuel(fuel)
+    Connector.hud.set_parachute(parachute_time > 0)
 
 func _physics_process(delta: float) -> void:
     # No idea how you would sync the material state so we just sync
@@ -47,6 +50,9 @@ func _physics_process(delta: float) -> void:
     $Sprite2D.scale.y = lerpf(1, 0.7, _power/max_power)
     $Title/PanelContainer/PointsLabel.text = "Points: {0}".format([score])
     $Title.visible = score > 0 
+    $ParachuteSprite2D.visible = parachute_time > 0
+    
+    parachute_time -= delta
     
     if not is_multiplayer_authority():
         return
@@ -78,14 +84,19 @@ func _physics_process(delta: float) -> void:
     if _pending_jump_power > 0 and _coyote_timer > 0.0:
         _jump()
     # If we have a double jump and are outside the coyote time, jump
-    if CustomInput.jump_just_released() and double_jump and _coyote_timer <= 0:
-        double_jump = false
+    if CustomInput.jump_just_released() and fuel and _coyote_timer <= 0:
+        fuel = false
         @warning_ignore("integer_division")
         _pending_jump_power = max_power / 2
         _jump()
 
     if position.y > 1500:
         GameManager.restart(self)
+
+    if parachute_time > 0:
+        # Technically this race conditions with die() but idc
+        var angle = $Arm.rotation + PI/2
+        apply_force(Vector2(cos(angle), sin(angle)) * (_pending_jump_power + 600))
 
     # For debugging
     Connector.hud.set_debug("""Position: {0}

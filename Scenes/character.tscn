@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqgsc3rrfuf5p"]
+[gd_scene load_steps=19 format=3 uid="uid://bqgsc3rrfuf5p"]
 
 [ext_resource type="Script" uid="uid://nrgk5bemi5cv" path="res://character.gd" id="1_ejsiy"]
 [ext_resource type="Texture2D" uid="uid://bjgr0yw1g5syo" path="res://Sprites/slime.png" id="2_2mse5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ca0iinrkee3cn" path="res://Sprites/Steam/Frame3.png" id="8_7iw6i"]
 [ext_resource type="Texture2D" uid="uid://csf4ypg3qhdy" path="res://Sprites/Steam/Frame4.png" id="9_l1rcp"]
 [ext_resource type="Texture2D" uid="uid://d3gmyap4i86h8" path="res://Sprites/ShitStar.png" id="10_kq7hj"]
+[ext_resource type="Texture2D" uid="uid://wgab5dtv1gjl" path="res://Sprites/Parachute.png" id="11_7iw6i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ejsiy"]
 friction = 0.8
@@ -72,6 +73,11 @@ contact_monitor = true
 max_contacts_reported = 80
 script = ExtResource("1_ejsiy")
 
+[node name="ParachuteSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -100)
+scale = Vector2(2.2059283, 2.2059283)
+texture = ExtResource("11_7iw6i")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-62, 48)
 texture = ExtResource("2_2mse5")
@@ -130,6 +136,19 @@ sprite_frames = SubResource("SpriteFrames_le1tg")
 frame_progress = 0.856939
 flip_h = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = ExtResource("10_kq7hj")
+lifetime = 0.5
+direction = Vector2(0, -90)
+spread = 90.0
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color = Color(1, 0, 0, 1)
+
 [node name="Title" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -152,16 +171,3 @@ grow_vertical = 2
 layout_mode = 2
 text = "Points: 0"
 label_settings = SubResource("LabelSettings_wbia7")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 12
-texture = ExtResource("10_kq7hj")
-lifetime = 0.5
-direction = Vector2(0, -90)
-spread = 90.0
-initial_velocity_min = 600.0
-initial_velocity_max = 600.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
-color = Color(1, 0, 0, 1)

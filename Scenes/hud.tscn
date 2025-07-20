@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq4fcxbqsfd5w"]
+[gd_scene load_steps=15 format=3 uid="uid://bq4fcxbqsfd5w"]
 
 [ext_resource type="Script" uid="uid://1jfxpstvagb5" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Texture2D" uid="uid://dobhh42r6fy5o" path="res://Sprites/Fuel.png" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://wgab5dtv1gjl" path="res://Sprites/Parachute.png" id="3_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://di352e4o163ox" path="res://Sprites/Controls/LeftButton.png" id="3_43w4t"]
 [ext_resource type="Texture2D" uid="uid://c2b7n0nefm6w2" path="res://Sprites/Controls/LeftButtonPressed.png" id="4_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://dxswxg6ecgyok" path="res://Sprites/Controls/JumpButton.png" id="5_5ep0j"]
@@ -101,6 +102,10 @@ layout_mode = 2
 [node name="Fuel" type="TextureRect" parent="Items/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_fccik")
+
+[node name="Parachute" type="TextureRect" parent="Items/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_7gr8i")
 
 [node name="Loading" type="PanelContainer" parent="."]
 layout_mode = 1

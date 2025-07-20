@@ -32,6 +32,9 @@ func update_hiscores(scores: Array[int]):
 func set_fuel(vis: bool) -> void:
     $Items/HBoxContainer/Fuel.visible = vis
 
+func set_parachute(vis: bool) -> void:
+    $Items/HBoxContainer/Parachute.visible = vis
+
 func hide_loading() -> void:
     $Loading.visible = false
     
