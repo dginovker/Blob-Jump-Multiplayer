@@ -49,6 +49,11 @@ func _physics_process(delta: float) -> void:
     if not is_multiplayer_authority():
         return
     
+    if $Area2D.is_stabbed():
+        # die
+        GameManager.restart(self)
+        return
+    
     score = len(touched_stars)
 
     if CustomInput.left_pressed():
@@ -59,7 +64,7 @@ func _physics_process(delta: float) -> void:
     if CustomInput.jump_pressed():
         _power = min(_power + 1000 * delta, max_power)
     Connector.hud.update_power(_power)
-    if $BottomArea2D.is_colliding():
+    if $Area2D.is_colliding():
         _coyote_timer = coyote_time
     else:
         _coyote_timer -= delta
@@ -84,7 +89,7 @@ func _physics_process(delta: float) -> void:
     # For debugging
     Connector.hud.set_debug("""Position: {0}
 On floor: {1}"""
-    .format([Vector2i(position), $BottomArea2D.is_colliding()]))
+    .format([Vector2i(position), $Area2D.is_colliding()]))
 
 func _jump():
     var angle = $Arm.rotation + PI/2

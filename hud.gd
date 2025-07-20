@@ -11,7 +11,7 @@ func _ready() -> void:
     singleplayer_button.pressed.connect(_start_singleplayer)
     # Debug stuff
     #$PanelContainer/VBoxContainer/PowerLabel.visible = true
-    #$PanelContainer/VBoxContainer/DebugLabel.visible = true
+    $PanelContainer/VBoxContainer/DebugLabel.visible = true
 
 func update_power(power: float):
     $PanelContainer/VBoxContainer/PowerLabel.text = "Power: " + str(int(power))
@@ -22,8 +22,9 @@ func set_debug(data: String):
 
 func update_hiscores(scores: Array[int]):
     var text = "Hiscores:\n"
+    scores.sort()
     for i in range(min(len(scores), 5)):
-        text += str(scores[i]) + "\n"
+        text += str(scores[-i-1]) + "\n"
     text += "Online: " + str(len(scores))
     var label: Label = $PanelContainer/VBoxContainer/HiscoreLabel
     label.text = text

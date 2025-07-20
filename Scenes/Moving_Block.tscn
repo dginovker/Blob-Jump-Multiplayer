@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://csokx0k14yy12"]
 
 [ext_resource type="Script" uid="uid://dgkn5dw6dxu7h" path="res://moving_platform.gd" id="1_ovxm4"]
-[ext_resource type="Texture2D" uid="uid://5jrbvgnq8tyy" path="res://Sprites/CombinedTreeTiles.png" id="2_nw0np"]
+[ext_resource type="Texture2D" uid="uid://car1gng31tqt5" path="res://Sprites/MovingPlatformSprite.png" id="2_ovxm4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lngpp"]
 friction = 3.0
@@ -21,7 +21,7 @@ sync_to_physics = false
 script = ExtResource("1_ovxm4")
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformAnimatableBody2D"]
-texture = ExtResource("2_nw0np")
+texture = ExtResource("2_ovxm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatformAnimatableBody2D"]
 shape = SubResource("RectangleShape2D_2hwfj")
