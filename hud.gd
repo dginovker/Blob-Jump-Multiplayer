@@ -1,6 +1,10 @@
 extends Control
 class_name Hud
 
+@onready var left: TextureButton = $MobileControlsVBox/HBoxContainer2/LeftButton
+@onready var right: TextureButton = $MobileControlsVBox/HBoxContainer2/RightButton
+@onready var jump: TextureButton = $MobileControlsVBox/HBoxContainer2/JumpButton
+
 func _ready() -> void:
     Connector.register_hud(self)
     var singleplayer_button: Button = $Loading/VBoxContainer/Button

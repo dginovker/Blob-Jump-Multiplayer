@@ -102,6 +102,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+rotation = 3.1415927
 
 [node name="ArmSprite2D" type="Sprite2D" parent="Arm"]
 texture_filter = 1

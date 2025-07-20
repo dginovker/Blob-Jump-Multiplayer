@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxonquq6erqd5"]
+
+[ext_resource type="Texture2D" uid="uid://di352e4o163ox" path="res://Sprites/Controls/LeftButton.png" id="1_6ms30"]
+[ext_resource type="Texture2D" uid="uid://c2b7n0nefm6w2" path="res://Sprites/Controls/LeftButtonPressed.png" id="2_1xpol"]
+[ext_resource type="Texture2D" uid="uid://dxswxg6ecgyok" path="res://Sprites/Controls/JumpButton.png" id="3_b6uhm"]
+[ext_resource type="Texture2D" uid="uid://cmlkdqo5ikfnx" path="res://Sprites/Controls/JumpButtonPressed.png" id="4_m7jg7"]
+[ext_resource type="Texture2D" uid="uid://ckrgwxcrjo2bu" path="res://Sprites/Controls/RightButton.png" id="5_rd2pk"]
+[ext_resource type="Texture2D" uid="uid://dq32geuhjjbdb" path="res://Sprites/Controls/RightButtonPressed.png" id="6_70nwa"]
+
+[node name="MobileControlsContainerPanelContainer" type="VBoxContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_right = -624.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LeftButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_6ms30")
+texture_pressed = ExtResource("2_1xpol")
+
+[node name="SpacerControl" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JumpButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_b6uhm")
+texture_pressed = ExtResource("4_m7jg7")
+
+[node name="SpacerControl2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_rd2pk")
+texture_pressed = ExtResource("6_70nwa")

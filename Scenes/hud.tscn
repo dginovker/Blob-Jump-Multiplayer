@@ -1,7 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq4fcxbqsfd5w"]
+[gd_scene load_steps=14 format=3 uid="uid://bq4fcxbqsfd5w"]
 
 [ext_resource type="Script" uid="uid://1jfxpstvagb5" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Texture2D" uid="uid://dobhh42r6fy5o" path="res://Sprites/Fuel.png" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://di352e4o163ox" path="res://Sprites/Controls/LeftButton.png" id="3_43w4t"]
+[ext_resource type="Texture2D" uid="uid://c2b7n0nefm6w2" path="res://Sprites/Controls/LeftButtonPressed.png" id="4_7gr8i"]
+[ext_resource type="Texture2D" uid="uid://dxswxg6ecgyok" path="res://Sprites/Controls/JumpButton.png" id="5_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://cmlkdqo5ikfnx" path="res://Sprites/Controls/JumpButtonPressed.png" id="6_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://ckrgwxcrjo2bu" path="res://Sprites/Controls/RightButton.png" id="7_piegi"]
+[ext_resource type="Texture2D" uid="uid://dq32geuhjjbdb" path="res://Sprites/Controls/RightButtonPressed.png" id="8_i2avg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -129,3 +135,56 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Start Singleplayer Instead "
+
+[node name="MobileControlsVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MobileControlsVBox"]
+layout_mode = 2
+
+[node name="SpacerControl3" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("3_43w4t")
+texture_pressed = ExtResource("4_7gr8i")
+
+[node name="SpacerControl" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JumpButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("5_5ep0j")
+texture_pressed = ExtResource("6_4f5kr")
+
+[node name="SpacerControl2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightButton" type="TextureButton" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("7_piegi")
+texture_pressed = ExtResource("8_i2avg")
+
+[node name="SpacerControl4" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -51,15 +51,12 @@ func _physics_process(delta: float) -> void:
     
     score = len(touched_stars)
 
-    if Input.is_action_pressed("Left"):
+    if CustomInput.left_pressed():
         $Arm.rotation -= delta * 5
-    if Input.is_action_pressed("Right"):
+    if CustomInput.right_pressed():
         $Arm.rotation += delta * 5        
 
-    var jump_pressed = Input.is_action_pressed("Jump")
-    var jump_just_released = Input.is_action_just_released("Jump")
-
-    if jump_pressed:
+    if CustomInput.jump_pressed():
         _power = min(_power + 1000 * delta, max_power)
     Connector.hud.update_power(_power)
     if $BottomArea2D.is_colliding():
@@ -67,7 +64,7 @@ func _physics_process(delta: float) -> void:
     else:
         _coyote_timer -= delta
 
-    if jump_just_released:
+    if CustomInput.jump_just_released():
         _pending_jump_power = _power
         _power = 0
 
@@ -75,7 +72,7 @@ func _physics_process(delta: float) -> void:
     if _pending_jump_power > 0 and _coyote_timer > 0.0:
         _jump()
     # If we have a double jump and are outside the coyote time, jump
-    if jump_just_released and double_jump and _coyote_timer <= 0:
+    if CustomInput.jump_just_released() and double_jump and _coyote_timer <= 0:
         double_jump = false
         @warning_ignore("integer_division")
         _pending_jump_power = max_power / 2
