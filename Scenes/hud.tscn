@@ -161,6 +161,7 @@ size_flags_horizontal = 3
 [node name="LeftTouchScreenButton" type="TouchScreenButton" parent="MobileControlsVBox/HBoxContainer2/CenterContainer1"]
 texture_normal = ExtResource("3_43w4t")
 texture_pressed = ExtResource("4_7gr8i")
+visibility_mode = 1
 
 [node name="CenterContainer2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
@@ -170,6 +171,7 @@ size_flags_horizontal = 3
 position = Vector2(17, 0)
 texture_normal = ExtResource("5_5ep0j")
 texture_pressed = ExtResource("6_4f5kr")
+visibility_mode = 1
 
 [node name="CenterContainer3" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2
@@ -179,6 +181,7 @@ size_flags_horizontal = 3
 position = Vector2(158, 0)
 texture_normal = ExtResource("7_piegi")
 texture_pressed = ExtResource("8_i2avg")
+visibility_mode = 1
 
 [node name="Control2" type="Control" parent="MobileControlsVBox/HBoxContainer2"]
 layout_mode = 2

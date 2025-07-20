@@ -1,9 +1,9 @@
 extends Control
 class_name Hud
 
-@onready var left: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/LeftButton
-@onready var right: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/RightButton
-@onready var jump: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/JumpButton
+@onready var left: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/CenterContainer1/LeftTouchScreenButton
+@onready var jump: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/CenterContainer2/JumpTouchScreenButton
+@onready var right: TouchScreenButton = $MobileControlsVBox/HBoxContainer2/CenterContainer3/RightTouchScreenButton
 
 func _ready() -> void:
     Connector.register_hud(self)
