@@ -11,7 +11,7 @@ func _ready() -> void:
     singleplayer_button.pressed.connect(_start_singleplayer)
     # Debug stuff
     #$PanelContainer/VBoxContainer/PowerLabel.visible = true
-    $PanelContainer/VBoxContainer/DebugLabel.visible = true
+    #$PanelContainer/VBoxContainer/DebugLabel.visible = true
 
 func update_power(power: float):
     $PanelContainer/VBoxContainer/PowerLabel.text = "Power: " + str(int(power))
