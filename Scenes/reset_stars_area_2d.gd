@@ -6,6 +6,8 @@ func _ready() -> void:
 func _on_entered(body: Node):
     if body is not Character:
         return
+    if not body.is_multiplayer_authority():
+        return
     var player = body as Character
     if len(player.touched_stars) < 50:
         Connector.hud.set_game_message_box("You need at least 50 stars to reset them!")    

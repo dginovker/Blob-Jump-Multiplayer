@@ -7,6 +7,8 @@ func _ready() -> void:
 func _body_entered(body: Node):
     if body is not Character:
         return
+    if not body.is_multiplayer_authority():
+        return
     var character = (body as Character)
     if len(character.touched_stars) >= 50:
         Connector.hud.set_game_message_box("Congratulations!")
