@@ -19,13 +19,13 @@
 texture = ExtResource("2_leai6")
 texture_region_size = Vector2i(128, 128)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -56, 64, 56, -64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-56, -64, 56, -64, 64, 64, -64, 64)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 56, 64, -56, 64)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -56, 64, -64, 64, 64, -64, 56)
 
 [sub_resource type="TileSet" id="TileSet_6c8wo"]
 tile_size = Vector2i(128, 128)
@@ -90,7 +90,7 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_leai6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -112, 0, 0, 0, 0, 0, 1000)
 }
 point_count = 2
 
@@ -510,9 +510,12 @@ position = Vector2(3072, -720)
 position = Vector2(7464, -2144)
 
 [node name="Path2D" type="Path2D" parent="MovingPlatforms/3"]
+position = Vector2(0, -28.776978)
+scale = Vector2(1, 1.028777)
 curve = SubResource("Curve2D_leai6")
 
 [node name="PathFollow2D" parent="MovingPlatforms/3/Path2D" instance=ExtResource("5_su3qq")]
+position = Vector2(0, -112)
 
 [node name="Messages" type="Node" parent="."]
 
