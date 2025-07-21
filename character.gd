@@ -19,6 +19,7 @@ var checkpoint: Area2D = null
 var fuel: bool = false
 var checkpoint_fuel: bool = false
 var parachute_time: float = 0
+var boost_pad: Vector2 = Vector2.ZERO
 
 func _ready():
     $SteamRightAnimatedSprite2D.play("default")
@@ -97,6 +98,8 @@ func _physics_process(delta: float) -> void:
         # Technically this race conditions with die() but idc
         var angle = $Arm.rotation + PI/2
         apply_force(Vector2(cos(angle), sin(angle)) * (_pending_jump_power + 600))
+
+    apply_force(boost_pad * 2000)
 
     # For debugging
     Connector.hud.set_debug("""Position: {0}

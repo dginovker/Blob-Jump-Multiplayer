@@ -42,9 +42,10 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBg"]
 material = SubResource("ShaderMaterial_e35lh")
 position = Vector2(0, -1620)
-scale = Vector2(5, 5)
+scale = Vector2(40, 20)
 texture = ExtResource("7_ldntv")
 centered = false
+offset = Vector2(0, -324)
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
