@@ -9,8 +9,8 @@ func _ready():
     # If we're running in the browser, just connect to the server
     if OS.get_name() == "Web":
         print("Joining as WebSocket client")
-        peer.create_client("ws://127.0.0.1:9999") # Test Local!!
-        #peer.create_client("wss://duck.openredsoftware.com/blobjump") # Real server!
+        #peer.create_client("ws://127.0.0.1:9999") # Test Local!!
+        peer.create_client("wss://duck.openredsoftware.com/blobjump") # Real server!
         print("Client created")
         get_tree().get_multiplayer().multiplayer_peer = peer
         get_tree().get_multiplayer().peer_connected.connect(_on_client_connected)
