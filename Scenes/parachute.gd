@@ -9,7 +9,7 @@ func _on_body_entered(body: Node) -> void:
         
     # Give the character a parachute
     self.visible = false
-    (body as Character).parachute_time = 10
-    # Disable this body for 10 seconds
+    (body as Character).parachute_time = 5
+    # Disable this body for some seconds
     await get_tree().create_timer(5.0).timeout
     self.visible = true

@@ -11,8 +11,8 @@ func die(player: Character) -> void:
     restart(player)
 
 func restart(player: Character) -> void:
-    var respawn_position = Vector2(0, -100)
-    #var respawn_position = Vector2(6500, -5000)
+    #var respawn_position = Vector2(0, -100)
+    var respawn_position = Vector2(3600, -3700)
     if player.checkpoint != null:
         respawn_position = player.checkpoint.position
     player.position = respawn_position
@@ -23,3 +23,4 @@ func restart(player: Character) -> void:
         obj.visible = false
     player.touched_stars = player.checkpoint_stars.duplicate()
     player.fuel = player.checkpoint_fuel
+    player.parachute_time = 0

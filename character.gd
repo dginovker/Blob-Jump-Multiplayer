@@ -19,7 +19,6 @@ var checkpoint: Area2D = null
 var fuel: bool = false
 var checkpoint_fuel: bool = false
 var parachute_time: float = 0
-var boost_pad: Vector2 = Vector2.ZERO
 
 func _ready():
     $SteamRightAnimatedSprite2D.play("default")
@@ -95,16 +94,16 @@ func _physics_process(delta: float) -> void:
         GameManager.restart(self)
 
     if parachute_time > 0:
-        # Technically this race conditions with die() but idc
         var angle = $Arm.rotation + PI/2
         apply_force(Vector2(cos(angle), sin(angle)) * (_pending_jump_power + 600))
-
-    apply_force(boost_pad * 2000)
+        var drag_strength := 0.001  # base coefficient, tweak this
+        var drag_force_x = -linear_velocity.x * abs(linear_velocity.x) * drag_strength
+        apply_force(Vector2(drag_force_x, 0))
 
     # For debugging
     Connector.hud.set_debug("""Position: {0}
-On floor: {1}"""
-    .format([Vector2i(position), $Area2D.is_colliding()]))
+Velocity: {1}"""
+    .format([Vector2i(position), Vector2i(linear_velocity)]))
 
 func _jump():
     var angle = $Arm.rotation + PI/2
