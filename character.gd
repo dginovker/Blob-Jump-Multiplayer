@@ -4,7 +4,8 @@ class_name Character
 @onready var blood: CPUParticles2D = $CPUParticles2D
 
 @export var max_power := 1000
-@export var coyote_time := 0.1
+var coyote_time := 0.1
+@export var color: String = "blue"
 
 var _camera_zoom_max := 0.5
 var _camera_zoom_min := 0.05
@@ -19,6 +20,7 @@ var checkpoint: Area2D = null
 var fuel: bool = false
 var checkpoint_fuel: bool = false
 var parachute_time: float = 0
+var boosted_stars: int = 0
 
 func _ready():
     $SteamRightAnimatedSprite2D.play("default")
@@ -27,9 +29,11 @@ func _ready():
         return
     $Camera2D.make_current()
     GameManager.restart(self)
-    print("Spawned with multiplayer authority ", get_multiplayer_authority())        
+    print("Spawned with multiplayer authority ", get_multiplayer_authority())
 
 func _process(delta: float) -> void:
+    _update_texture()
+    
     if not is_multiplayer_authority():
         return
     # Make Camera zoom out the faster the character goes
@@ -47,7 +51,7 @@ func _physics_process(delta: float) -> void:
     ($Arm/ArmPowerSprite2D.material as ShaderMaterial).set_shader_parameter("cutoff", lerpf(0, 1, _power/max_power))
     $SteamRightAnimatedSprite2D.visible = _power > 0
     $SteamLeftAnimatedSprite2D.visible = _power > 0
-    $Sprite2D.scale.y = lerpf(1, 0.7, _power/max_power)
+    %SlimeSprite.scale.y = lerpf(1, 0.7, _power/max_power)
     $Title/PanelContainer/PointsLabel.text = "Points: {0}".format([score])
     $Title.visible = score > 0 
     $ParachuteSprite2D.visible = parachute_time > 0
@@ -61,7 +65,7 @@ func _physics_process(delta: float) -> void:
         GameManager.die(self)
         return
     
-    score = len(touched_stars)
+    score = len(touched_stars) + boosted_stars
 
     if CustomInput.left_pressed():
         $Arm.rotation -= delta * 5
@@ -110,3 +114,7 @@ func _jump():
     var jump_impulse = Vector2(cos(angle), sin(angle)) * _pending_jump_power
     apply_central_impulse(jump_impulse)
     _pending_jump_power = 0
+    
+func _update_texture():
+    if RecolorScript.color_to_texture(color) != %SlimeSprite.texture:
+        %SlimeSprite.texture = RecolorScript.color_to_texture(color)

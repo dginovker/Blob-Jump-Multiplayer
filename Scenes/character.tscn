@@ -31,7 +31,10 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 properties/3/path = NodePath(".:score")
 properties/3/spawn = true
-properties/3/replication_mode = 1
+properties/3/replication_mode = 2
+properties/4/path = NodePath(".:color")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa5vi"]
 size = Vector2(141, 101)
@@ -78,7 +81,8 @@ position = Vector2(0, -100)
 scale = Vector2(2.2059283, 2.2059283)
 texture = ExtResource("11_7iw6i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SlimeSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-62, 48)
 texture = ExtResource("2_2mse5")
 centered = false

@@ -42,3 +42,9 @@ func _start_singleplayer() -> void:
     hide_loading()
     print("Starting singleplayer...")
     Connector.multiplayer_spawner.spawn(1)
+    
+func set_game_message_box(text: String) -> void:
+    $GameMessageBox/VBoxContainer/Label.text = text
+    $GameMessageBox.visible = true
+    await get_tree().create_timer(10).timeout
+    $GameMessageBox.visible = false

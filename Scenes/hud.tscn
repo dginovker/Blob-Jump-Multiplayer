@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bq4fcxbqsfd5w"]
+[gd_scene load_steps=16 format=3 uid="uid://bq4fcxbqsfd5w"]
 
 [ext_resource type="Script" uid="uid://1jfxpstvagb5" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Texture2D" uid="uid://dobhh42r6fy5o" path="res://Sprites/Fuel.png" id="2_fccik"]
 [ext_resource type="Texture2D" uid="uid://wgab5dtv1gjl" path="res://Sprites/Parachute.png" id="3_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://di352e4o163ox" path="res://Sprites/Controls/LeftButton.png" id="3_43w4t"]
+[ext_resource type="StyleBox" uid="uid://uhas2lhckxoy" path="res://Scenes/default_control_style.tres" id="4_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://c2b7n0nefm6w2" path="res://Sprites/Controls/LeftButtonPressed.png" id="4_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://dxswxg6ecgyok" path="res://Sprites/Controls/JumpButton.png" id="5_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://cmlkdqo5ikfnx" path="res://Sprites/Controls/JumpButtonPressed.png" id="6_4f5kr"]
@@ -24,28 +25,13 @@ corner_radius_bottom_left = 1
 [sub_resource type="LabelSettings" id="LabelSettings_37p78"]
 font_size = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
-content_margin_left = 30.0
-content_margin_top = 30.0
-content_margin_right = 30.0
-content_margin_bottom = 30.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 5
-
 [sub_resource type="LabelSettings" id="LabelSettings_bjfho"]
 font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_fccik"]
 font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gr8i"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -114,7 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fccik")
+theme_override_styles/panel = ExtResource("4_5ep0j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Loading"]
 layout_mode = 2
@@ -192,3 +178,35 @@ visibility_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="GameMessageBox" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -33.5
+offset_right = 156.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7gr8i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMessageBox"]
+layout_mode = 2
+theme_override_constants/separation = 128
+
+[node name="Label" type="Label" parent="GameMessageBox/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_5ep0j")
+theme_override_styles/focus = ExtResource("4_5ep0j")
+text = "Quack quack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="GameMessageBox/VBoxContainer"]
+layout_mode = 2

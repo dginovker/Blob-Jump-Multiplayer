@@ -12,7 +12,7 @@ func die(player: Character) -> void:
 
 func restart(player: Character) -> void:
     var respawn_position = Vector2(0, -100)
-    #var respawn_position = Vector2(3600, -3700)
+    #var respawn_position = Vector2(-2600, -1000)
     if player.checkpoint != null:
         respawn_position = player.checkpoint.position
     player.position = respawn_position
